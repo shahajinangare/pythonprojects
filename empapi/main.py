@@ -1,10 +1,11 @@
-import os
-from app import app, db
-
+from flask import Flask,jsonify
+from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from json import dumps
 
+app = Flask(__name__)
+db_connect = create_engine('sqlite:///chinook.db')
 api = Api(app)
 
 class Employees(Resource):
