@@ -1,0 +1,11 @@
+''' _________ Database configuration _________'''
+MYSQL_DATABASE_USER = 'root'
+MYSQL_DATABASE_PASSWORD = 'a'
+MYSQL_DATABASE_DB = 'python_db'
+MYSQL_DATABASE_HOST = 'localhost'
+
+'''____________SMTP Configuration_____________'''
+SEND_FROM_EMAIL='shahaji.nangare@gmail.com'
+SEND_FROM_PASSWORD ='nangare()04'
+SMTP_SERVER='smtp.gmail.com'
+SMTP_PORT='587'

@@ -1,0 +1,36 @@
+http://flask-admin.readthedocs.io/en/latest/introduction/
+
+https://flask-admin.readthedocs.io/en/latest/
+
+https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/Python3_Flask.html
+
+https://dzone.com/articles/flask-101-adding-editing-and-displaying-data
+
+
+
+After you get your dependencies installed and confirm they're doing the trick for you, you'll probably want to keep track of and control what versions of the dependencies you're using. Pip allows us to "freeze" our dependencies, and record which versions we are using in a file that (by convention) is called requirements.txt. Create a requirements file with this command:
+
+pip freeze > requirements.txt
+If later on you wish to install this same set of dependencies again, you can install them from this file with the following command:
+
+pip install -r requirements.txt
+
+
+Study Status :
+===============
+
+
+1. PyCharm
+2. Study the Tools
+3. Create / Install requirements.txt
+4. Study Basic fundamentals
+5. MVC Framework - Flash / Django
+6. Use GitHub - Create account / push and pull the code and version control
+7. Create SMTP connectivity and send mail to receiver
+8. Create python API / Web Application and host on Apache / nginx server
+10. Create connectivity with SQL serevr / MYSQL / Oracle / cansandra / PostgraceSQL
+11. Study the Beewise application with Elastic Search
+12. 
+
+
+
