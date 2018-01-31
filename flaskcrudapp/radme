@@ -15,6 +15,7 @@ If later on you wish to install this same set of dependencies again, you can ins
 
 pip install -r requirements.txt
 
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 
 Study Status :
 ===============
@@ -30,7 +31,7 @@ Study Status :
 8. Create python API / Web Application and host on Apache / nginx server
 10. Create connectivity with SQL serevr / MYSQL / Oracle / cansandra / PostgraceSQL
 11. Study the Beewise application with Elastic Search
-12. 
+
 
 
 

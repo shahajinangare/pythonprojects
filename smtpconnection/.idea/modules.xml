@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/../empapi/.idea/empapi.iml" filepath="$PROJECT_DIR$/../empapi/.idea/empapi.iml" />
       <module fileurl="file://$PROJECT_DIR$/../flaskcrudapp/.idea/flaskcrudapp.iml" filepath="$PROJECT_DIR$/../flaskcrudapp/.idea/flaskcrudapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/../musicapp/.idea/musicapp.iml" filepath="$PROJECT_DIR$/../musicapp/.idea/musicapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rest-server/.idea/rest-server.iml" filepath="$PROJECT_DIR$/../rest-server/.idea/rest-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/smtpconnection.iml" filepath="$PROJECT_DIR$/.idea/smtpconnection.iml" />
     </modules>
   </component>
