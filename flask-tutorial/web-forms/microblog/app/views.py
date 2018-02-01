@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect
 from app import app
-from .forms import LoginForm
+from .forms import LoginForm, UserForm
 
 @app.route('/')
 @app.route('/index')
@@ -33,3 +33,13 @@ def login():
                            title='Sign In',
                            form=form,
                            providers=app.config['OPENID_PROVIDERS'])
+
+@app.route('/user', methods=['GET', 'POST'])
+def user():
+    form = UserForm()
+    if form.validate_on_submit():
+        flash('User Name = %s' % (form.username.data))
+        return redirect('/index')
+    return render_template('user.html',
+                           title='User',
+                           form=form)

@@ -3,5 +3,12 @@
     <h1>Hi, {{ user.nickname }}!</h1>
     {% for post in posts %}
     <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
+    <div><p>Posted on {{ post.createdate }}</p></div>
     {% endfor %}
+    <table>
+        <tr><td>First Name</td><td>Last Name</td><td>Education</td><td>Birth Date</td></tr>
+    {% for user in users %}
+        <tr><td>{{ user.firstname}}</td><td>{{ user.lastname}}</td><td>{{ user.education}}</td><td>{{ user.birthdate}}</td></tr>
+    {% endfor %}
+    </table>
 {% endblock %}
