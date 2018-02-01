@@ -12,10 +12,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="run.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/run.py">
+        <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/microblog/run.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -115,6 +115,17 @@
             </path>
             <path>
               <item name="smtpconnection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flask-tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="helloworld" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smtpconnection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flask-tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="helloworld" type="462c0819:PsiDirectoryNode" />
+              <item name="microblog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smtpconnection" type="b2602c69:ProjectViewProjectNode" />
               <item name="musicapp" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -137,11 +148,11 @@
       <recent name="D:\python\pycharm\flaskcrudapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\python\pycharm\pythonprojects\flask-tutorial\helloworld\microblog" />
       <recent name="D:\python\pycharm\pythonprojects\flask-tutorial\helloworld" />
       <recent name="D:\python\pycharm\pythonprojects\flaskcrudapp" />
       <recent name="D:\python\pycharm\flaskcrudapp\templates\my" />
       <recent name="D:\python\pycharm\flaskcrudapp\templates" />
-      <recent name="D:\python\pycharm\flaskcrudapp\admin\analytics" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -612,7 +623,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/app/__init__.py">
+    <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/microblog/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -620,7 +631,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/app/views.py">
+    <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/microblog/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -636,10 +647,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/run.py">
+    <entry file="file://$PROJECT_DIR$/../flask-tutorial/helloworld/microblog/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
