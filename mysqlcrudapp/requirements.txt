@@ -1,0 +1,13 @@
+Flask
+Flask-MySQLdb
+Jinja2
+MarkupSafe
+WTForms
+Werkzeug
+click
+itsdangerous
+mysqlclient
+passlib
+pip
+setuptools
+wheel
