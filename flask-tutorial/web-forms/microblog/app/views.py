@@ -4,6 +4,7 @@ from .forms import LoginForm, UserForm, RegistrationForm
 
 @app.route('/')
 @app.route('/index')
+
 def index():
     user = {'nickname': 'Miguel'}
     posts = [
@@ -20,7 +21,6 @@ def index():
                            title='Home',
                            user=user,
                            posts=posts)
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -47,12 +47,15 @@ def user():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(form.username.data, form.email.data,
-                    form.password.data)
-        db_session.add(user)
-        flash('Thanks for registering')
-        return redirect('/index')
-    return render_template('register.html',title='Registration',
+
+    if not form.validate_on_submit():
+        return render_template('register.html',
+                           title='Registration',
                            form=form)
 
+    #user = User(form.username.data, form.email.data,
+    #    form.password.data)
+    #db_session.add(user)
+
+    flash('Thanks for registering')
+    return redirect('/index')
