@@ -168,12 +168,15 @@ def dashboard():
     # Create cursor
     cur = mysql.connection.cursor()
 
-    # Get articles
-    result = cur.execute("SELECT * FROM articles")
+    # Get articles inline query
+    #result = cur.execute("SELECT * FROM articles")
+    #articles = cur.fetchall()
 
+    # print _hashed_password;
+    cur.callproc('sp_get_articles', ())
     articles = cur.fetchall()
 
-    if result > 0:
+    if len(articles) is not 0:
         return render_template('dashboard.html', articles=articles)
     else:
         msg = 'No Articles Found'
