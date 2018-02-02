@@ -37,11 +37,16 @@ def articles():
     cur = mysql.connection.cursor()
 
     # Get articles
-    result = cur.execute("SELECT * FROM articles")
+    #result = cur.execute("SELECT * FROM articles")
+    #articles = cur.fetchall()
 
+    #if result > 0:
+
+    # call procedure
+    cur.callproc('sp_get_articles', ([0]))
     articles = cur.fetchall()
 
-    if result > 0:
+    if len(articles) is not 0:
         return render_template('articles.html', articles=articles)
     else:
         msg = 'No Articles Found'
@@ -57,8 +62,12 @@ def article(id):
     cur = mysql.connection.cursor()
 
     # Get article
-    result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
+    #result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
 
+    #article = cur.fetchone()
+
+    # call procedure
+    cur.callproc('sp_get_articles', ([id]))
     article = cur.fetchone()
 
     return render_template('article.html', article=article)
@@ -90,17 +99,23 @@ def register():
         cur = mysql.connection.cursor()
 
         # Execute query
-        cur.execute("INSERT INTO users(id,name, email, username, password) VALUES(NULL,%s, %s, %s, %s)", (name, email, username, password))
+        #cur.execute("INSERT INTO users(id,name, email, username, password) VALUES(NULL,%s, %s, %s, %s)", (name, email, username, password))
 
         # Commit to DB
-        mysql.connection.commit()
+        #mysql.connection.commit()
+
+        # call procedure
+        result_args = cur.callproc('sp_ins_users', ([name, email, username, password]))
+        result = cur.fetchall()
 
         # Close connection
         cur.close()
+        if len(result) is 1:
+            flash('You are now registered and can log in', 'success')
+            return redirect(url_for('login'))
+        else:
+            flash('Username already exists', 'Fail')
 
-        flash('You are now registered and can log in', 'success')
-
-        return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
 
@@ -115,12 +130,18 @@ def login():
         # Create cursor
         cur = mysql.connection.cursor()
 
-        # Get user by username
-        result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
+        # Get user by username -- inline code
+        #result = cur.execute("SELECT * FROM users WHERE username = %s", [username])
 
-        if result > 0:
+        #if result > 0:
+
+        # call procedure
+        cur.callproc('sp_get_users',([username]))
+        result = cur.fetchall()
+
+        if len(result) is 1:
             # Get stored hash
-            data = cur.fetchone()
+            data = result[0]
             password = data['password']
 
             # Compare Passwords
@@ -172,8 +193,8 @@ def dashboard():
     #result = cur.execute("SELECT * FROM articles")
     #articles = cur.fetchall()
 
-    # print _hashed_password;
-    cur.callproc('sp_get_articles', ())
+    # call procedure
+    cur.callproc('sp_get_articles', ([0]))
     articles = cur.fetchall()
 
     if len(articles) is not 0:
@@ -197,22 +218,25 @@ def add_article():
     if request.method == 'POST' and form.validate():
         title = form.title.data
         body = form.body.data
-
+        o_code='';
+        o_message='';
         # Create Cursor
         cur = mysql.connection.cursor()
 
         # Execute
-        cur.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)",(title, body, session['username']))
-
+        #cur.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)",(title, body, session['username']))
         # Commit to DB
-        mysql.connection.commit()
+        #mysql.connection.commit()
+
+        # call procedure
+        result_args = cur.callproc('sp_ins_articles', ([0,title, body, session['username'],o_code,o_message]))
+        result = cur.fetchall()
 
         #Close connection
         cur.close()
-
-        flash('Article Created', 'success')
-
-        return redirect(url_for('dashboard'))
+        if len(result) is not 0:
+            flash('Article Created', 'success')
+            return redirect(url_for('dashboard'))
 
     return render_template('add_article.html', form=form)
 
@@ -225,9 +249,14 @@ def edit_article(id):
     cur = mysql.connection.cursor()
 
     # Get article by id
-    result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
+    #result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
 
+    #article = cur.fetchone()
+
+    # call procedure
+    cur.callproc('sp_get_articles', ([id]))
     article = cur.fetchone()
+
     cur.close()
     # Get form
     form = ArticleForm(request.form)
@@ -239,21 +268,26 @@ def edit_article(id):
     if request.method == 'POST' and form.validate():
         title = request.form['title']
         body = request.form['body']
+        o_code = '';
+        o_message = '';
 
         # Create Cursor
         cur = mysql.connection.cursor()
         app.logger.info(title)
         # Execute
-        cur.execute ("UPDATE articles SET title=%s, body=%s WHERE id=%s",(title, body, id))
+        #cur.execute ("UPDATE articles SET title=%s, body=%s WHERE id=%s",(title, body, id))
         # Commit to DB
-        mysql.connection.commit()
+        #mysql.connection.commit()
 
-        #Close connection
+        # call procedure
+        result_args = cur.callproc('sp_ins_articles', ([id,title, body, session['username'], o_code, o_message]))
+        result = cur.fetchall()
+
+        # Close connection
         cur.close()
-
-        flash('Article Updated', 'success')
-
-        return redirect(url_for('dashboard'))
+        if len(result) is not 0:
+            flash('Article Updated', 'success')
+            return redirect(url_for('dashboard'))
 
     return render_template('edit_article.html', form=form)
 
@@ -265,17 +299,20 @@ def delete_article(id):
     cur = mysql.connection.cursor()
 
     # Execute
-    cur.execute("DELETE FROM articles WHERE id = %s", [id])
+    #cur.execute("DELETE FROM articles WHERE id = %s", [id])
 
     # Commit to DB
-    mysql.connection.commit()
+    #mysql.connection.commit()
 
-    #Close connection
+    # call procedure
+    result_args = cur.callproc('sp_del_articles', ([id]))
+    result = cur.fetchall()
+
+    # Close connection
     cur.close()
-
-    flash('Article Deleted', 'success')
-
-    return redirect(url_for('dashboard'))
+    if len(result) is not 0:
+        flash('Article Deleted', 'success')
+        return redirect(url_for('dashboard'))
 
 if __name__ == '__main__':
     app.secret_key='secret123'
